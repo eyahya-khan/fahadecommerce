@@ -1,6 +1,6 @@
 <?php
 require('src/dbconnect.php');
-
+//add
 if(isset($_POST['add'])){
     $title   = trim($_POST['fname']);
     $price   = trim($_POST['price']);
@@ -9,9 +9,7 @@ $file_name   = $_FILES['file']['name'];
 $file_loc    = $_FILES['file']['tmp_name'];
 $file_store  = "image/".$file_name;
 if(!move_uploaded_file($file_loc, $file_store)){
-   
 }else{
-
     try {
       $query = "
         INSERT INTO products (name, price, description, img)
@@ -27,8 +25,28 @@ if(!move_uploaded_file($file_loc, $file_store)){
       throw new \PDOException($e->getMessage(), (int) $e->getCode());
     }    
 }
- 
 }
+// delete from table
+if(isset($_POST['deleteBtn'])){
+    $id   = trim($_POST['hidId']);
+try {
+    $query = "
+      DELETE FROM products
+      WHERE id = :id;
+    ";
+    $stmt = $dbconnect->prepare($query);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    $message = 
+      '<div class="alert alert-success" role="alert">
+        Product deleted successfully.
+      </div>';
+  } catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int) $e->getCode());
+  }
+  }
+
+//fetch all information
     try {
   $query = "SELECT * FROM products;";
   $stmt = $dbconnect->query($query);
@@ -88,7 +106,13 @@ if(!move_uploaded_file($file_loc, $file_store)){
                     <td><?php echo $product['name']; ?> </td>
                     <td><?php echo $product['price']; ?> </td>
                     <td><?php echo $product['description']; ?></td>
-                    <td></td>
+                    <td>
+                         <form action="" method="POST" class="float-right">
+                            <input type="hidden" name="hidId" value="<?=$product['id']?>">
+                            <input type="submit" name="deleteBtn" value="Delete" class="btn btn-danger delete-product-btn">
+                        </form>
+
+                    </td>
                 </tr>
                 <?php } ?>
             </tbody>
