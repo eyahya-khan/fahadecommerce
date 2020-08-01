@@ -36,10 +36,7 @@ if(!move_uploaded_file($file_loc, $file_store)){
 } catch (\PDOException $e) {
   throw new \PDOException($e->getMessage(), (int) $e->getCode());
 }
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
