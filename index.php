@@ -32,7 +32,10 @@ require('src/dbconnect.php');
                 <img src="image/IMG_1288.jpg" alt="" width="100%" height="320px" class="mt-2 mb-2">
             </div>
             <div class="col-6">
-                <img src="image/IMG_1296.jpg" alt="" width="100%" height="320px" class="mt-2 mb-2">
+                <!--                <img src="image/IMG_1296.jpg" alt="" width="100%" height="320px" class="mt-2 mb-2">-->
+                <video width="100%" height="97%" controls>
+                    <source src="video/addvideo.mov" type="video/mp4">
+                </video>
             </div>
         </div>
 
@@ -50,21 +53,21 @@ require('src/dbconnect.php');
                     <td><?php echo $product['quantity']; ?> items available</td>
                     <td>
 
-                    <!--counting first line-->
-                    <?php
+                        <!--counting first line-->
+                        <?php
                     $pos = strpos($product['description'], '.');
                     $firstSentence = substr($product['description'], 0, max($pos+1, 40));
                     echo $firstSentence;
                     ?>
-                       <!--sending id to product.php page for fetching specific data-->
-                <br><a href="product.php?hidID=<?=$product['id']?>"><em>more info</em></a>
-                </td>
+                        <!--sending id to product.php page for fetching specific data-->
+                        <br><a href="product.php?hidID=<?=$product['id']?>"><em>more info</em></a>
+                    </td>
 
                 </tr>
                 <?php } ?>
             </tbody>
         </table>
-        
-        
+
+
     </div>
     <?php include('layout/footer.php');?>
