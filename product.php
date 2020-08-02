@@ -1,5 +1,6 @@
 <?php
 require('src/dbconnect.php');
+
 //fetch all information
     try {
 	$stmt = $dbconnect->prepare("SELECT name,description,price,img,quantity FROM products

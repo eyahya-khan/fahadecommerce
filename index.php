@@ -1,5 +1,6 @@
 <?php
 require('src/dbconnect.php');
+
 //fetch all information
     try {
   $query = "SELECT * FROM products;";
@@ -9,10 +10,16 @@ require('src/dbconnect.php');
   throw new \PDOException($e->getMessage(), (int) $e->getCode());
 }
 ?>
+
 <?php include('layout/header.php');?>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <body>
     <div class="container">
         <h2>Sweden Bangla trade venture background image</h2>
+
         <div class="row">
             <div class="col-12">
                 <a href="login.php" class="float-right">| Log in</a>
@@ -28,6 +35,7 @@ require('src/dbconnect.php');
                 <img src="image/IMG_1296.jpg" alt="" width="100%" height="320px" class="mt-2 mb-2">
             </div>
         </div>
+
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -41,6 +49,7 @@ require('src/dbconnect.php');
                     <td><a href="product.php?hidID=<?=$product['id']?>" class="text-dark"><?php echo $product['price']; ?> taka/item</a></td>
                     <td><?php echo $product['quantity']; ?> items available</td>
                     <td>
+
                     <!--counting first line-->
                     <?php
                     $pos = strpos($product['description'], '.');
@@ -50,9 +59,12 @@ require('src/dbconnect.php');
                        <!--sending id to product.php page for fetching specific data-->
                 <br><a href="product.php?hidID=<?=$product['id']?>"><em>more info</em></a>
                 </td>
+
                 </tr>
                 <?php } ?>
             </tbody>
         </table>
+        
+        
     </div>
     <?php include('layout/footer.php');?>
