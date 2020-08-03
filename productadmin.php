@@ -1,5 +1,7 @@
 <?php
 require('src/dbconnect.php');
+    require('src/config.php');
+    $pageTitle = "admin productlist";
 //add
 if(isset($_POST['add'])){
     $title   = trim($_POST['name']);

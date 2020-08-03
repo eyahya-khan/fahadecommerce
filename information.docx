@@ -1,0 +1,5 @@
+//show title name
+
+step-1: write in header.php (<title><?php echo $pageTitle ?></title>)
+step-2: write src/config.php
+step-3: every page call src/config.php and write  $pageTitle = "Login"; 

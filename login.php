@@ -2,7 +2,7 @@
     // database connection
     require('src/dbconnect.php');
     require('src/config.php');
-    $pageTitle = "Log in page";
+    $pageTitle = "Login";
  //Log in validation
     $msg   = "";
     $error ='';

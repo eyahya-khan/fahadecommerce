@@ -1,5 +1,7 @@
 <?php
 require('src/dbconnect.php');
+    require('src/config.php');
+    $pageTitle = "home page";
 //fetch all information
     try {
   $query = "SELECT * FROM products;";
@@ -33,6 +35,8 @@ require('src/dbconnect.php');
                 </video>
             </div>
         </div>
+        
+        <div> <?php include('cart.php');?> </div>
         
         <div class="row shadow-lg mb-3">
         <?php foreach ($products as $key => $product) { ?>

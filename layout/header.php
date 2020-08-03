@@ -26,7 +26,7 @@
 <!--    <link rel="stylesheet" type="text/css" href="../../public/css/style.css">-->
     <!--extra css for public directory-->
 <!--    <link rel="stylesheet" type="text/css" href="css/style.css">-->
-<!--    <link rel="shortcut icon" href="img/favicon.ico">-->
+    <link rel="shortcut icon" href="../image/favicon.ico">
     <title><?php echo $pageTitle ?></title>
 </head>
         

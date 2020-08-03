@@ -2,7 +2,7 @@
     // database connection
     require('src/dbconnect.php');
     require('src/config.php');
-    $pageTitle = "Register page";
+    $pageTitle = "sign up";
 //sign up validation
     $msg       = '';
     $error     = '';

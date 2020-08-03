@@ -1,5 +1,7 @@
 <?php
 require('src/dbconnect.php');
+    require('src/config.php');
+    $pageTitle = "product details";
 //fetch all information
     try {
 	$stmt = $dbconnect->prepare("SELECT name,description,price,img,quantity FROM products
