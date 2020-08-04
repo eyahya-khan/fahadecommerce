@@ -12,8 +12,7 @@ require('src/dbconnect.php');
 }
 ?>
 <?php include('layout/header.php');?>
-<!DOCTYPE html>
-<html lang="en">
+
 <body>
     <div class="container">
 <!--        <h2>Sweden Bangla trade venture background image</h2>-->
@@ -40,6 +39,7 @@ require('src/dbconnect.php');
         
         <div class="row shadow-lg mb-3">
         <?php foreach ($products as $key => $product) { ?>
+<!--        <div class="row">-->
             <div class="col-3 p-2 text-center">
                 <h5 class="text-center text-danger"><?php echo $product['name'] ?></h5>
                 <a href="product.php?hidID=<?=$product['id']?>"><img src="image/<?php echo $product['img']; ?>" width="100%" height="50%"></a>
@@ -55,6 +55,7 @@ require('src/dbconnect.php');
                 </form>
             </div>
         <?php } ?>
-        </div>
+        
+            </div>
     </div>
     <?php include('layout/footer.php');?>

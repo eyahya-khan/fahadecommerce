@@ -8,6 +8,7 @@ if(isset($_POST['add'])){
     $price   = trim($_POST['price']);
 $description = trim($_POST['description']);
 $quantity    = trim($_POST['quantity']);
+$category    = trim($_POST['category']);
 $file_name   = $_FILES['file']['name'];
 $file_loc    = $_FILES['file']['tmp_name'];
 $file_store  = "image/".$file_name;
@@ -15,8 +16,8 @@ if(!move_uploaded_file($file_loc, $file_store)){
 }else{
     try {
       $query = "
-        INSERT INTO products (name, price, description, img, quantity)
-        VALUES (:name,:price, :description, :image, :quantity);
+        INSERT INTO products (name, price, description, img, quantity, category)
+        VALUES (:name,:price, :description, :image, :quantity, :category);
       ";
       $stmt = $dbconnect->prepare($query);
       $stmt->bindValue(':name', $title);
@@ -24,13 +25,14 @@ if(!move_uploaded_file($file_loc, $file_store)){
       $stmt->bindValue(':description', $description);
       $stmt->bindValue(':image', $file_name);
       $stmt->bindValue(':quantity', $quantity);
+      $stmt->bindValue(':category', $category);
       $stmt->execute();    
     } catch (\PDOException $e) {
       throw new \PDOException($e->getMessage(), (int) $e->getCode());
     }    
 }
 }
-// delete from table
+// delete
 if(isset($_POST['deleteBtn'])){
     $id   = trim($_POST['hidId']);
 try {
@@ -55,17 +57,14 @@ try {
     $price   = trim($_POST['price']);
 $description = trim($_POST['description']);
 $quantity    = trim($_POST['quantity']);
+$category    = trim($_POST['category']);
       $id    = trim($_POST['id']);
-//$file_name   = $_FILES['file']['name'];
-//$file_loc    = $_FILES['file']['tmp_name'];
-//$file_store  = "image/".$file_name;
-//if(!move_uploaded_file($file_loc, $file_store)){
-//}else{
+
         
     try {
       $query = "
         UPDATE products
-        SET description = :description,name = :name,price = :price,quantity = :quantity
+        SET description = :description,name = :name,price = :price,quantity = :quantity,category = :category
         WHERE id = :id;
       ";
       $stmt = $dbconnect->prepare($query);
@@ -74,6 +73,7 @@ $quantity    = trim($_POST['quantity']);
       $stmt->bindValue(':price', $price);
 //      $stmt->bindValue(':img', $file_name);
       $stmt->bindValue(':quantity', $quantity);
+      $stmt->bindValue(':category', $category);
       $stmt->bindValue(':id', $id);
       $stmt->execute();
 //     $message =  "<ul style='background-color:#d4edda;'>Post updated successfully</ul>";
@@ -109,7 +109,8 @@ $quantity    = trim($_POST['quantity']);
             <label>Choose Image:</label>
             <input type="file" name="file"><br>
             <textarea name="description" class="form-control mb-1" placeholder="Product Description" rows="5" cols="30"></textarea>
-            <input type="text" name="quantity" placeholder="quantity"><br><br>
+            <input type="text" name="quantity" placeholder="quantity">
+            <input type="text" name="category" placeholder="Category"><br><br>
 
             <input type="submit" name="add" value="Add">
         </form>
@@ -122,6 +123,7 @@ $quantity    = trim($_POST['quantity']);
                     <th>Name</th>
                     <th>Price</th>
                     <th>Description</th>
+                    <th>Category</th>
                     <th></th>
                 </tr>
             </thead>
@@ -133,6 +135,7 @@ $quantity    = trim($_POST['quantity']);
                     <td><?php echo $product['name']; ?> </td>
                     <td><?php echo $product['price']; ?> </td>
                     <td><?php echo $product['description']; ?></td>
+                    <td><?php echo $product['category']; ?></td>
                     <td>
                     <!--delete-->
                          <form action="" method="POST" class="float-right">
@@ -144,6 +147,7 @@ $quantity    = trim($_POST['quantity']);
                         data-name="<?=htmlentities($product['name'])?>" 
                         data-price="<?=htmlentities($product['price'])?>" 
                         data-quantity="<?=htmlentities($product['quantity'])?>" 
+                        data-category="<?=htmlentities($product['category'])?>" 
                         data-description="<?=htmlentities($product['description'])?>" 
                         data-id="<?=htmlentities($product['id'])?>">Update</button>
                     </td>
@@ -165,14 +169,16 @@ $quantity    = trim($_POST['quantity']);
                 <form action="" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Update Title: </label>
+                            <label for="recipient-name" class="col-form-label">Product Name: </label>
                             <input type="text" class="form-control" name="name" for="recipient-name">
-                            <label for="recipient-name" class="col-form-label">Update Description: </label>
-                            <textarea class="form-control" name="description" for="recipient-name" rows="6"></textarea>
-                            <label for="recipient-name" class="col-form-label">Update Price: </label>
+                            <label for="recipient-name" class="col-form-label">Description: </label>
+                            <textarea class="form-control" name="description" for="recipient-name" rows="4"></textarea>
+                            <label for="recipient-name" class="col-form-label">Price/Unit: </label>
                             <input type="text" class="form-control" name="price" for="recipient-name">
-                            <label for="recipient-name" class="col-form-label">Update quantity: </label>
+                            <label for="recipient-name" class="col-form-label">Quantity: </label>
                             <input type="text" class="form-control" name="quantity" for="recipient-name">
+                            <label for="recipient-name" class="col-form-label">Category: </label>
+                            <input type="text" class="form-control" name="category" for="recipient-name">
 <!--                            <input type="file" class="form-control" name="file" for="recipient-name">-->
                             <input type="hidden" class="form-control" name="id">
                         </div>
@@ -193,12 +199,14 @@ $quantity    = trim($_POST['quantity']);
         var description = button.data('description'); // Extract info from data-* attributes
 //        var file        = button.data('file'); // Extract info from data-* attributes
         var quantity    = button.data('quantity'); // Extract info from data-* attributes
+        var category    = button.data('category'); // Extract info from data-* attributes
         var id          = button.data('id'); // Extract info from data-* attributes
         var modal = $(this);
         modal.find(".modal-body input[name='name']").val(name);
         modal.find(".modal-body textarea[name='description']").val(description);
         modal.find(".modal-body input[name='price']").val(price);
         modal.find(".modal-body input[name='quantity']").val(quantity);
+        modal.find(".modal-body input[name='category']").val(category);
 //        modal.find(".modal-body input[name='file']").val(file);
         modal.find(".modal-body input[name='id']").val(id);
     });
