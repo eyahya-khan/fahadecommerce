@@ -50,7 +50,7 @@ require('src/dbconnect.php');
                  <p><em><?php echo $product['quantity'];?> are available</em></p>
                 <form action="addtocart.php" method="POST">
                     <input type="hidden" name="productId" value="<?=$product['id']?>">
-                    <input type="number" min="0" value="1" name="quantity">
+                    <input type="number" min="1" max="1000" value="1" name="quantity"><br>
                     <input type="submit" value="add to cart" name="addToCart" class="btn btn-info border-red mt-2">
                 </form>
             </div>

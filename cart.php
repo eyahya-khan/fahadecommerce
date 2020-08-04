@@ -35,20 +35,27 @@ foreach ($_SESSION['cartItems'] as $cartId => $cartItem) {
                 </div>
                 <div class="col-3">
                     <span class="price text-info">
-                        price:
-                        <?=$cartItem['price']?>
-                    </span>
+                        
+                        <?=$cartItem['price']?> 
+                    </span>Tk/Item
                 </div>
                 <div class="col-3">
                     <span class="count">
-                        Quantity:
-                        <?=$cartItem['quantity']?>
+<!--                        Quantity:<?=$cartItem['quantity']?>-->
+                   <form class="update-cart-form" action="updatecartitem.php" method="post">
+                            <input type="hidden" name="cartId" value="<?=htmlentities($cartId)?>">
+                            <input type="number" name="quantity" value="<?=htmlentities($cartItem['quantity'])?>" min="1" max="1000">
+                            <button type="submit" class="btn btn-info">add</button>
+                        </form>
                     </span>
                 </div>
                 <div class="col-2">
                     <form action="deletecartitem.php" method="POST">
                         <input type="hidden" name="cartId" value="<?=$cartId?>">
-                        <input type="submit" class="btn btn-info" name="deleteBtn" value="Delete">
+                        <!--                        <input type="submit" class="btn btn-info" name="deleteBtn" value="Delete">-->
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -59,7 +66,7 @@ foreach ($_SESSION['cartItems'] as $cartId => $cartItem) {
                     <p>Total Item: <span class="text-info"><?=$cartItemCount?> </span></p>
                 </div>
                 <div class="col-8 text-center">
-                    <p> Totalt: <span class="text-info"> <?= $cartTotalsum ?> Tk</span></p>
+                    <p> Total: <span class="text-info"> <?= $cartTotalsum ?> Tk</span></p>
                 </div>
             </div>
             <div class="col-lg-12 col-sm-12 col-12 text-center checkout">

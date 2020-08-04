@@ -1,8 +1,4 @@
 <?php 
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
-require('src/dbconnect.php');
 require('src/config.php');
 
 if (!empty($_POST['cartId']) && isset($_SESSION['cartItems'][$_POST['cartId']])) {
