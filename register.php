@@ -29,8 +29,9 @@
     if($email === $user['email']){
      $error .= '<li> Email already exists.</li>';
     }
-    }   
-    //validation of firstname
+    }
+        
+ //validation of firstname
   if (empty($firstname)) {
        $error .=  '<li> firstname must not be empty</li>';
   }else if(is_numeric($firstname)){
