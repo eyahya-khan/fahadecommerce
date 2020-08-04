@@ -42,10 +42,10 @@ foreach ($_SESSION['cartItems'] as $cartId => $cartItem) {
                 <div class="col-3">
                     <span class="count">
 <!--                        Quantity:<?=$cartItem['quantity']?>-->
-                   <form class="update-cart-form" action="updatecartitem.php" method="post">
+                   <form class="update-cart-form" action="" method="post">
                             <input type="hidden" name="cartId" value="<?=htmlentities($cartId)?>">
                             <input type="number" name="quantity" value="<?=htmlentities($cartItem['quantity'])?>" min="1" max="1000">
-                            <button type="submit" class="btn btn-info">add</button>
+<!--                            <button type="submit" class="btn btn-info">add</button>-->
                         </form>
                     </span>
                 </div>

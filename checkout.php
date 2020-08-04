@@ -35,52 +35,72 @@ $pageTitle = 'Checkout';
         </div>
         <div> <?php include('cart.php'); ?></div>
         <br>
-        <table class="table table-borderless">
-            <thead>
-                <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Info</th>
-                    <th scope="col"></th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Price/Item</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($_SESSION['cartItems'] as $cartId => $cartItem) { ?>
-                <tr class="border">
-                    <td><img src="image/<?=htmlentities($cartItem['img'])?>" width="100" height="50px">
-                    </td>
-                    <td><?=htmlentities($cartItem['description'])?></td>
-                    <td>
-                        <!--delete item-->
-                        <form action="deletecartitem.php" method="post">
-                            <input type="hidden" name="cartId" value="<?=htmlentities($cartId)?>">
-                            <button type="submit" class="btn btn-danger">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </form>
-                    </td>
-                    <td>
-                        <!--update quantity item-->
-                        <form class="update-cart-form" action="updatecartitem.php" method="post">
-                            <input type="hidden" name="cartId" value="<?=htmlentities($cartId)?>">
-                            <input type="number" name="quantity" value="<?=htmlentities($cartItem['quantity'])?>" min="1">
-                        </form>
-                    </td>
-                    <td><?=htmlentities($cartItem['price'])?> SEK</td>
-                </tr>
-                <?php } ?>
-                <tr class="border">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><strong>Total: <?=htmlentities($cartTotalsum)?> SEK</strong></td>
-                </tr>
-            </tbody>
-        </table>
-        <br><br><br>
-      
-        <br>
+
+        <!--        <div class="row mr-4">-->
+        <div class="row">
+            <div class="col-6 text-right">
+                <h1>Checkout</h1>
+            </div>
+            <div class="col-5 text-right">
+                <form action="" method="POST">
+                    <input type="submit" class="btn btn-info" name="resetBtn" value="Clear All">
+                </form>
+            </div>
+        </div>
+
+
+        <?php foreach ($_SESSION['cartItems'] as $cartId => $cartItem){ ?>
+        <hr>
+        <div class="row">
+            <div class="col-2 text-center">
+                <img src="image/<?=$cartItem['img']?>" width="40px" height="40px">
+            </div>
+            <div class="col-2 cart-detail-product">
+                <b><?=$cartItem['name']?></b>
+            </div>
+            <div class="col-3">
+                <span class="price text-info">
+
+                    <?=$cartItem['price']?>
+                </span>Tk/Item
+            </div>
+            <div class="col-3">
+                <span class="count">
+                    <!--                        Quantity:<?=$cartItem['quantity']?>-->
+                    <form class="update-cart-form" action="updatecartitem.php" method="post">
+                        <input type="hidden" name="cartId" value="<?=htmlentities($cartId)?>">
+                        <input type="number" name="quantity" value="<?=htmlentities($cartItem['quantity'])?>" min="1" max="1000">
+                        <button type="submit" class="btn btn-info">add</button>
+                    </form>
+                </span>
+            </div>
+            <div class="col-2">
+                <form action="deletecartitem.php" method="POST">
+                    <input type="hidden" name="cartId" value="<?=$cartId?>">
+                    <!--                        <input type="submit" class="btn btn-info" name="deleteBtn" value="Delete">-->
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <hr>
+        <?php } ?>
+        <div class="row">
+            <div class="col-4 text-center">
+                <p>Total Item: <span class="text-info"><?=$cartItemCount?> </span></p>
+            </div>
+            <div class="col-8 text-center">
+                <p> <strong>Total: <span class="text-info"> <?= $cartTotalsum ?> Tk</span></strong></p>
+            </div>
+        </div>
+        <hr>
+        <!--        </div>-->
+        <div class="row">
+            <p>If you are member! <a href="login.php"><input type="submit" value="Sign in" class="btn btn-info border-dark mb-2"></a></p>
+            <p> New user? <a href="register.php"><input type="submit" value="Sign up" class="btn btn-info border-dark mb-2"></a></p>
+        </div>
+
+
     </div>
     <?php include('layout/footer.php'); ?>
