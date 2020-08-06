@@ -144,6 +144,66 @@ $quantity    = trim($_POST['quantity']);
 $category    = trim($_POST['category']);
       $id    = trim($_POST['id']);
 
+       //validation of product name
+  if (empty($name)) {
+      $error .=  '<li> Product name must not be empty</li>';
+  }else if(is_numeric($name)){
+      $error .=  '<li> Product name: Only number is not allowed</li>';
+  }else if(!preg_match("/^[a-zA-Z0-9 ]*$/",$name)){
+       $error .=  '<li> Product name: Only letter, number and whitespace are allowed</li>'; 
+  }else if(strlen($name) > 90){
+       $error .=  '<li> Product name must have less than 90 characters</li>'; 
+  }else if(strlen($name) < 5){
+       $error .=  '<li> Product name must have 4 characters long</li>'; 
+  }
+//validation of price
+  if(empty($price)){
+      $error .=  '<li> Price must not be empty</li>';
+  }else if(!preg_match('/^(0|[1-9]\d*)(\.\d{2})?$/',$price)){
+       $error .=  '<li> Price: Seems wrong price, 00/00.00 are right format</li>';
+  }else if(strlen($price) > 9){
+       $error .=  '<li>Price seems too high</li>';
+  }else if(strlen($price) < 2){
+       $error .=  '<li> Price seems too low</li>';
+  }
+ //validation of product description
+$firstWord=explode(' ',trim($_POST['description']));
+  if(empty($description)){
+      $error .=  '<li> Product description must not be empty</li>';
+  }else if(is_numeric($description)){
+      $error .=  '<li> Product description: number is not allowed</li>';
+  }else if(!preg_match("/^[a-zA-Z]$/",$description[0])){
+       $error .=  '<li>  Product description: start with letter</li>';
+  }else if(!preg_match("/^[a-zA-Z ]*$/", substr($description, 0, 10))){
+       $error .=  '<li>  Product description: First 15 character should have letter</li>';
+  }else if(strlen($description) < 20){
+       $error .=  '<li>  Product description should have at least 20 character</li>';
+  }else if(strlen($firstWord[0]) > 10){
+       $error .=  '<li> First word is too long. *Use space to make it short</li>';
+  }
+//validation of product category
+  if (empty($category)) {
+      $error .=  '<li> Product category must not be empty</li>';
+  }else if(is_numeric($category)){
+      $error .=  '<li> Product category: Only number is not allowed</li>';
+  }else if(!preg_match("/^[a-zA-Z0-9 ]*$/",$category)){
+       $error .=  '<li> Product category: Only letter, number and whitespace are allowed</li>'; 
+  }else if(strlen($category) > 90){
+       $error .=  '<li> Product category must have less than 90 characters</li>'; 
+  }else if(strlen($category) < 3){
+       $error .=  '<li> Product category must have 4 characters long</li>'; 
+  }
+   //validation of quantity
+  if(empty($quantity)){
+      $error .=  '<li> Quantity must not be empty</li>';
+  }else if(!is_numeric($quantity)){
+       $error .=  '<li>Quantity must number</li>';
+  }
+
+  if($error){
+       $message =  "<ul style='background-color:#f8d7da;'>{$error}</ul>";
+    }
+    else { 
         
     try {
       $query = "
@@ -163,6 +223,7 @@ $category    = trim($_POST['category']);
      $message =  "<ul style='background-color:#d4edda;'>Product updated successfully</ul>";
     } catch (\PDOException $e) {
       throw new \PDOException($e->getMessage(), (int) $e->getCode());
+    }
     }
     }
     
