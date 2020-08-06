@@ -1,7 +1,22 @@
 <?php
-    require('src/dbconnect.php');
-    require('src/config.php');
+    require('../src/dbconnect.php');
+    require('../src/config.php');
     $pageTitle = "admin productlist";
+
+
+//check username and password have value or not
+if(isset($_SESSION['firstname'])){
+    $loginUsername = $_SESSION['firstname'];
+}else{
+    redirect('../login.php');
+}
+//remove username and password
+if(isset($_POST['logout'])){
+    session_unset();
+    session_destroy();
+    redirect('../index.php');
+}
+
 //add
 $message = '';
 $error   = '';
@@ -13,7 +28,7 @@ $quantity    = trim($_POST['quantity']);
 $category    = trim($_POST['category']);
 $file_name   = $_FILES['file']['name'];
 $file_loc    = $_FILES['file']['tmp_name'];
-$file_store  = "image/".$file_name;
+$file_store  = "../image/".$file_name;
     
 //validation of product name
   if (empty($title)) {
@@ -163,11 +178,20 @@ $category    = trim($_POST['category']);
 }
 ?>
 
-<?php include('layout/header.php'); ?>
+<?php include('../layout/header.php'); ?>
 
 <body>
 
     <div class="container">
+
+        <form action="" method="POST">
+            <div class="input-group-append mt-3 d-flex justify-content-end">
+                <!--display user name-->
+                <label class="mt-2 mr-2"><?php echo 'Welcome '.ucfirst($loginUsername); ?></label>
+                <input type="submit" name="logout" value="Log out" class="btn btn-outline-dark border-info">
+            </div>
+        </form>
+
         <h2>Sweden Bangla trade venture background image</h2>
         <p>Sweden Bangla trade venture menu</p>
         <!--display error message-->
@@ -203,7 +227,7 @@ $category    = trim($_POST['category']);
                 <?php foreach ($products as $key => $product) { ?>
                 <tr>
                     <td><?php echo $product['quantity']; ?> </td>
-                    <td><img src="image/<?php echo $product['img']; ?>" width="50px" height="50px"></td>
+                    <td><img src="../image/<?php echo $product['img']; ?>" width="50px" height="50px"></td>
                     <td><?php echo $product['name']; ?> </td>
                     <td><?php echo $product['price']; ?> </td>
                     <td><?php echo $product['description']; ?></td>
@@ -279,4 +303,4 @@ $category    = trim($_POST['category']);
 
     </script>
 
-    <?php include('layout/footer.php'); ?>
+    <?php include('../layout/footer.php'); ?>

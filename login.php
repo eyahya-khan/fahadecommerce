@@ -39,7 +39,7 @@ $decryptPassword = password_verify($password,$user['password']);
     if($user['email'] && $decryptPassword){
             $_SESSION['firstname'] = $user['first_name'];
 //            redirect('productadmin.php');
-            header('Location: productadmin.php');
+            header('Location: admin/productadmin.php');
             exit;
     }
     if($error){

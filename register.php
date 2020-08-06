@@ -30,7 +30,6 @@
      $error .= '<li> Email already exists.</li>';
     }
     }
-        
  //validation of firstname
   if (empty($firstname)) {
        $error .=  '<li> firstname must not be empty</li>';

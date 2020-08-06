@@ -3,3 +3,15 @@
 step-1: write in header.php (<title><?php echo $pageTitle ?></title>)
 step-2: write src/config.php
 step-3: every page call src/config.php and write  $pageTitle = "Login"; 
+
+
+
+//login logout
+
+output: welcome Eyahya(logout)
+
+step-1: add app/commonFunction.php
+step-2: add html in productadmin.php
+step-3: add php code in index.php
+
+

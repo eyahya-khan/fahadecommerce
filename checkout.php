@@ -66,7 +66,7 @@ $pageTitle = 'Checkout';
             </div>
             <div class="col-3">
                 <span class="count">
-                    <!--                        Quantity:<?=$cartItem['quantity']?>-->
+                    <!--Quantity:<?=$cartItem['quantity']?>-->
                     <form class="update-cart-form" action="updatecartitem.php" method="post">
                         <input type="hidden" name="cartId" value="<?=htmlentities($cartId)?>">
                         <input type="number" name="quantity" value="<?=htmlentities($cartItem['quantity'])?>" min="1" max="1000">
@@ -77,7 +77,7 @@ $pageTitle = 'Checkout';
             <div class="col-2">
                 <form action="deletecartitem.php" method="POST">
                     <input type="hidden" name="cartId" value="<?=$cartId?>">
-                    <!--                        <input type="submit" class="btn btn-info" name="deleteBtn" value="Delete">-->
+                    <!--<input type="submit" class="btn btn-info" name="deleteBtn" value="Delete">-->
                     <button type="submit" class="btn btn-danger">
                         <i class="fa fa-trash"></i>
                     </button>
@@ -95,7 +95,7 @@ $pageTitle = 'Checkout';
             </div>
         </div>
         <hr>
-        <!--        </div>-->
+        <!--</div>-->
         <div class="row">
             <p>If you are member! <a href="login.php"><input type="submit" value="Sign in" class="btn btn-info border-dark mb-2"></a></p>
             <p> New user? <a href="register.php"><input type="submit" value="Sign up" class="btn btn-info border-dark mb-2"></a></p>

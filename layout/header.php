@@ -18,7 +18,7 @@
     $('.update-cart-form input[name="quantity"]').on('change',function(){
     $(this).parent().submit(); 
     });
-    </script>
+    </script>  
 -->
 <!--    <script src="js/main.js"></script>-->
     <!--extra css for admin directory-->
