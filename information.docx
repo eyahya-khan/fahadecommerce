@@ -15,3 +15,10 @@ step-2: add html in productadmin.php
 step-3: add php code in index.php
 
 
+
+
+//class and function
+
+step-1: add app/ProductDbHandler.php
+step-2: call ProductDbHandler.php in app/commonFunction.php
+step-3: add php code in productadmin.php

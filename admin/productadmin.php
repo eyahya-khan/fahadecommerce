@@ -93,24 +93,7 @@ $firstWord=explode(' ',trim($_POST['description']));
 if(!move_uploaded_file($file_loc, $file_store)){
 }else{
     
-//    $ProductHandler -> add();    
-    try {
-      $query = "
-        INSERT INTO products (name, price, description, img, quantity, category)
-        VALUES (:name,:price, :description, :image, :quantity, :category);
-      ";
-      $stmt = $dbconnect->prepare($query);
-      $stmt->bindValue(':name', $title);
-      $stmt->bindValue(':price', $price);
-      $stmt->bindValue(':description', $description);
-      $stmt->bindValue(':image', $file_name);
-      $stmt->bindValue(':quantity', $quantity);
-      $stmt->bindValue(':category', $category);
-      $stmt->execute();   
-    $message =  "<ul style='background-color:#d4edda;'>Product uploaded successfully</ul>";
-    } catch (\PDOException $e) {
-      throw new \PDOException($e->getMessage(), (int) $e->getCode());
-    }    
+    $ProductHandler -> add();       
     
   }
 }
@@ -119,21 +102,9 @@ if(!move_uploaded_file($file_loc, $file_store)){
 // delete
 if(isset($_POST['deleteBtn'])){
     $id   = trim($_POST['hidId']);
-try {
-    $query = "
-      DELETE FROM products
-      WHERE id = :id;
-    ";
-    $stmt = $dbconnect->prepare($query);
-    $stmt->bindValue(':id', $id);
-    $stmt->execute();
-    $message = 
-      '<div class="alert alert-success" role="alert">
-        Product deleted successfully.
-      </div>';
-  } catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int) $e->getCode());
-  }
+    
+    $ProductHandler -> delete();
+
   }
 //update
     if (isset($_POST['updateBtn'])) {    
@@ -204,39 +175,15 @@ $firstWord=explode(' ',trim($_POST['description']));
        $message =  "<ul style='background-color:#f8d7da;'>{$error}</ul>";
     }
     else { 
-        
-    try {
-      $query = "
-        UPDATE products
-        SET description = :description,name = :name,price = :price,quantity = :quantity,category = :category
-        WHERE id = :id;
-      ";
-      $stmt = $dbconnect->prepare($query);
-      $stmt->bindValue(':name', $name);
-      $stmt->bindValue(':description', $description);
-      $stmt->bindValue(':price', $price);
-//      $stmt->bindValue(':img', $file_name);
-      $stmt->bindValue(':quantity', $quantity);
-      $stmt->bindValue(':category', $category);
-      $stmt->bindValue(':id', $id);
-      $stmt->execute();
-     $message =  "<ul style='background-color:#d4edda;'>Product updated successfully</ul>";
-    } catch (\PDOException $e) {
-      throw new \PDOException($e->getMessage(), (int) $e->getCode());
-    }
+      $ProductHandler -> update();  
     }
     }
     
 
 
 //fetch all information
-    try {
-  $query = "SELECT * FROM products;";
-  $stmt = $dbconnect->query($query);
-  $products = $stmt->fetchAll();
-} catch (\PDOException $e) {
-  throw new \PDOException($e->getMessage(), (int) $e->getCode());
-}
+ $products = $ProductHandler -> bringAll();
+
 ?>
 
 <?php include('../layout/header.php'); ?>
