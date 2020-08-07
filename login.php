@@ -8,7 +8,14 @@
     $error ='';
     if (isset($_POST['doLogin'])) {
         $email    = trim($_POST['email']);
-        $password = trim($_POST['password']);        
+        $password = trim($_POST['password']);  
+    
+//    if($email === "admin@admin.com" && $password === "1234"){
+//        //display username with first charcter uppercase
+////            $_SESSION['firstname'] = $user['first_name'];
+//            redirect('admin/productadmin.php');
+//               
+//    }else{
     try {
       $query = "
         SELECT * FROM users 
@@ -41,12 +48,14 @@ $decryptPassword = password_verify($password,$user['password']);
             redirect('admin/productadmin.php');
 //            header('Location: admin/productadmin.php');
 //            exit;
-    }
+    } 
+//    }
         
     if($error){
         $msg = "<ul style='background-color:#f8d7da;'>{$error}</ul>";
     }
-  }
+    }
+ 
 ?>
 <?php include('layout/header.php'); ?>
 <body>

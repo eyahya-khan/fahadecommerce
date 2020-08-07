@@ -101,6 +101,7 @@ $pageTitle = 'Checkout';
             <p> New user? <a href="register.php"><input type="submit" value="Sign up" class="btn btn-info border-dark mb-2"></a></p>
         </div>
 
+    <?php include('checkout-user-form.php'); ?>
 
     </div>
     <?php include('layout/footer.php'); ?>
