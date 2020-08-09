@@ -96,10 +96,12 @@ $pageTitle = 'Checkout';
         </div>
         <hr>
         <!--</div>-->
+<!--
         <div class="row">
             <p>If you are member! <a href="login.php"><input type="submit" value="Sign in" class="btn btn-info border-dark mb-2"></a></p>
             <p> New user? <a href="register.php"><input type="submit" value="Sign up" class="btn btn-info border-dark mb-2"></a></p>
         </div>
+-->
 
     <?php include('checkout-user-form.php'); ?>
 

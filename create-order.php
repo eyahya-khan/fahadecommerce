@@ -157,10 +157,10 @@ foreach($_SESSION['cartItems'] as $cartId => $cartItem) {
 	    }
 
 }
-unset($_SESSION['cartItems']);// clear cart
+//unset($_SESSION['cartItems']);// clear cart
  header('Location: order-confirmation.php');
 	exit;   
     
 }
-header('Location: checkout.php');
-	exit;  
+//header('Location: checkout.php');
+//	exit;  
