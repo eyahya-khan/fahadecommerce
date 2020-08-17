@@ -103,7 +103,7 @@ if(!move_uploaded_file($file_loc, $file_store)){
 if(isset($_POST['deleteBtn'])){
     $id   = trim($_POST['hidId']);
     
-    $ProductHandler -> delete();
+    $ProductHandler -> delete();  
 
   }
 //update
@@ -202,6 +202,7 @@ $firstWord=explode(' ',trim($_POST['description']));
 
         <h2>Sweden Bangla trade venture background image</h2>
         <p>Sweden Bangla trade venture menu</p>
+        <a href="orders.php"><button class="btn btn-info">Back to Order</button></a><br><br>
         <!--display error message-->
         <div id="form-message"><?=$message?></div>
 

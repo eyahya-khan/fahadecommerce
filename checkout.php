@@ -70,7 +70,7 @@ $pageTitle = 'Checkout';
                     <form class="update-cart-form" action="updatecartitem.php" method="post">
                         <input type="hidden" name="cartId" value="<?=htmlentities($cartId)?>">
                         <input type="number" name="quantity" value="<?=htmlentities($cartItem['quantity'])?>" min="1" max="1000">
-                        <button type="submit" class="btn btn-info">add</button>
+                        <button type="submit" class="btn btn-info">Update</button>
                     </form>
                 </span>
             </div>

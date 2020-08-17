@@ -142,7 +142,7 @@ foreach($_SESSION['cartItems'] as $cartId => $cartItem) {
     
     try {
 	        $query = "
-	            INSERT INTO order_items (order_id, product_id, quantity, unit_price, product_title) 
+	            INSERT INTO order_items (order_id, product_id, quantityy, unit_price, product_title) 
                 values (:orderId, :productId, :quantity, :price, :title);
 	        ";
 	        $stmt = $dbconnect->prepare($query);

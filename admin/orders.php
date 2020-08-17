@@ -26,6 +26,7 @@ try {
 
 <body>
     <div class="container">
+       <a href="productadmin.php"><button class="btn btn-info">Product Admin</button></a><br>
         <br>
         <h1>Received Order</h1>
         <br>
