@@ -18,7 +18,8 @@
     $(this).parent().submit(); 
     });
     </script>  
-<!--    <script src="js/main.js"></script>-->
+<!--carousel-->
+<!--    <script src="../js/main.js"></script>-->
     <!--extra css for admin directory-->
 <!--    <link rel="shortcut icon" href="../../public/img/favicon.ico">-->
 <!--    <link rel="stylesheet" type="text/css" href="../../public/css/style.css">-->

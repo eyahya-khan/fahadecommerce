@@ -18,8 +18,8 @@ require('src/dbconnect.php');
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a href="login.php" class="float-right">| Log in</a>
-                <a href="register.php" class="float-right">|| Sign up |</a>
+                <a href="login.php" class="float-right">|| Log in</a>
+<!--                <a href="register.php" class="float-right">|| Sign up |</a>-->
                 <a href="index.php" class="float-right mr-1"><i class="fa fa-home"> </i></a>
             </div>
         </div>
@@ -32,17 +32,17 @@ require('src/dbconnect.php');
             </div>
         </div>
         <div class="row text-center">
-            <div class="col-4 text-center">
+            <div class="col-lg-4 col-md-12 col-sm-12 text-center">
                 <img src="image/<?php echo $post['img'];?>" width="100%" height="95%" class="mt-2">
             </div>
-            <div class="col-4">
+            <div class="col-lg-4 col-md-12 col-sm-12">
                <h5 class="text-danger"><?php echo $post['name'];?></h5><hr>
                <h2 class="text-center">Specification<hr></h2>
-                <p class="text-justify">
+                <p class="text-center">
                     <?php echo $post['description'];?>
                 </p>
             </div>
-            <div class="col-4 text-center">
+            <div class="col-lg-4 col-md-12 col-sm-12 text-center">
                 <h4 class="mt-3"><?php echo $post['price'];?> taka/item</h4><hr>
                 <p><?php echo $post['quantity'];?> are available</p><hr>
                 <a href="index.php"><input type="submit" value="Back" class="btn btn-info border-dark mb-2"></a>

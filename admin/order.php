@@ -174,4 +174,4 @@ $orderData = $data[0];
         </table>
     </div>
 
-    <?php include('../layout/footer.php');?>
+    <?php include('../layout/foot.php');?>

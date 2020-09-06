@@ -62,4 +62,4 @@ try {
         </table>
     </div>
 
-    <?php include('../layout/footer.php');?>
+    <?php include('../layout/foot.php');?>

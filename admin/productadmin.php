@@ -312,4 +312,4 @@ $firstWord=explode(' ',trim($_POST['description']));
 
     </script>
 
-    <?php include('../layout/footer.php'); ?>
+    <?php include('../layout/.php'); ?>

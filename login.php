@@ -10,12 +10,12 @@
         $email    = trim($_POST['email']);
         $password = trim($_POST['password']);  
     
-//    if($email === "admin@admin.com" && $password === "1234"){
-//        //display username with first charcter uppercase
-////            $_SESSION['firstname'] = $user['first_name'];
-//            redirect('admin/productadmin.php');
-//               
-//    }else{
+    if($email === "admin@admin.com" && $password === "1234"){
+        //display username with first charcter uppercase
+            $_SESSION['firstname'] = admin;
+            redirect('admin/productadmin.php');
+               
+    }else{
     try {
       $query = "
         SELECT * FROM users 
@@ -45,11 +45,11 @@ $decryptPassword = password_verify($password,$user['password']);
     }
     if($user['email'] && $decryptPassword){
             $_SESSION['firstname'] = $user['first_name'];
-            redirect('admin/productadmin.php');
+            redirect('index.php');
 //            header('Location: admin/productadmin.php');
 //            exit;
     } 
-//    }
+    }
         
     if($error){
         $msg = "<ul style='background-color:#f8d7da;'>{$error}</ul>";
@@ -62,8 +62,8 @@ $decryptPassword = password_verify($password,$user['password']);
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a href="register.php" class="float-right">|| Sign up</a>
-                <a href="index.php" class="float-right mr-2"><i class="fa fa-home"> </i></a>
+<!--                <a href="register.php" class="float-right">|| Sign up</a>-->
+                <a href="index.php" class="float-right mr-2"><i class="fa fa-home">Home</i></a>
             </div>
         </div>
         <div class="row">
