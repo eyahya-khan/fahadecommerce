@@ -53,14 +53,14 @@ try {
 
 //fetch all information for dropdown list
     try {
-  $query = "SELECT * FROM products;";
+  $query = "SELECT DISTINCT category FROM products;";
   $stmt = $dbconnect->query($query);
   $prods = $stmt->fetchAll();
 } catch (\PDOException $e) {
   throw new \PDOException($e->getMessage(), (int) $e->getCode());
 }
 
-$totalprod = count($prods);
+
 
 
 //fetch all information for first display
