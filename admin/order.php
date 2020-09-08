@@ -142,6 +142,7 @@ $orderData = $data[0];
             <li class="list-group-item">Postal code: <?=$orderData['postal_code']?></li>
             <li class="list-group-item">City: <?=$orderData['city']?></li>
             <li class="list-group-item">Country: <?=$orderData['country']?></li>
+            <li class="list-group-item">Order Date: <?=$orderData['created_at']?></li>
         </ul>
         </div>
         <h3 class="border-bottom">Products Info</h3>

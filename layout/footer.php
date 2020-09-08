@@ -1,13 +1,13 @@
         <!-- footer -->
         <div class="row bg-dark text-white p-2 text-center">
             <div class="col-sm-12 col-md-6 col-lg-3">
-                <strong>Address:</strong><br><a href="" target="" class="text-white"> Åsogatan 117<br>116 24 Stockholm</a>
+                <strong>Address:</strong><br><a href="" target="" class="text-white"> Chapainababgonj<br>Bangladesh</a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-3">
                 <label for="myemail"><strong>Contact us:</strong></label><br>
-                <a href="mailto:eyahya@gmail.com?subject=Mymail&body=hello" title="my email address" id="myemail"><i class="fa fa-envelope fa-2x"></i></a>
-                <label for="mycell"></label><br>
-                <a href="tel:+4677765342" title="contact number" id="mycell"><i class="fa fa-mobile fa-3x"></i></a>
+                <a href="mailto:sweden.bangla.trade.venture2020@gmail.com?subject=Mymail&body=hello" title="my email address" id="myemail">sweden.bangla.trade.venture2020@gmail.com</a>
+                <label for="mycell"></label>
+                <a href="tel:+8801712902140" title="contact number" id="mycell">+8801712902140</a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-3">
                 <strong>Follow us:</strong><br>
@@ -23,37 +23,39 @@
                 <br><strong>@Copyright 2020</strong>
             </div>
         </div>
-        
-        
-        
-        
+
+
+
+<!--carousel start-->
         <script>
-$(document).ready(function(){
-  // Activate Carousel
-  $("#myCarousel").carousel();
-    
-  // Enable Carousel Indicators
-  $(".item1").click(function(){
-    $("#myCarousel").carousel(0);
-  });
-  $(".item2").click(function(){
-    $("#myCarousel").carousel(1);
-  });
-  $(".item3").click(function(){
-    $("#myCarousel").carousel(2);
-  });
-    
-  // Enable Carousel Controls
-  $(".carousel-control-prev").click(function(){
-    $("#myCarousel").carousel("prev");
-  });
-  $(".carousel-control-next").click(function(){
-    $("#myCarousel").carousel("next");
-  });
-});
-</script>
-        
-        
-        
-</body>
-</html>
+            $(document).ready(function() {
+                // Activate Carousel
+                $("#myCarousel").carousel();
+
+                // Enable Carousel Indicators
+                $(".item1").click(function() {
+                    $("#myCarousel").carousel(0);
+                });
+                $(".item2").click(function() {
+                    $("#myCarousel").carousel(1);
+                });
+                $(".item3").click(function() {
+                    $("#myCarousel").carousel(2);
+                });
+
+                // Enable Carousel Controls
+                $(".carousel-control-prev").click(function() {
+                    $("#myCarousel").carousel("prev");
+                });
+                $(".carousel-control-next").click(function() {
+                    $("#myCarousel").carousel("next");
+                });
+            });
+
+        </script>
+
+
+
+        </body>
+
+        </html>
